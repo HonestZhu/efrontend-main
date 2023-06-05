@@ -1,0 +1,57 @@
+.card {
+    border-radius: 8px;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    overflow: hidden;
+    height: 120px;
+    width: 200px;
+    background-color: #D6EAF8;
+    padding-left: 15px;
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+.title {
+    white-space: nowrap;
+    /* 禁止换行 */
+    overflow: hidden;
+    /* 溢出内容隐藏 */
+    text-overflow: ellipsis;
+    /* 超出用省略号表示 */
+
+    display: flex;
+}
+
+.data {
+    display: flex;
+    font-weight: bold;
+}
+
+.detail {
+    display: flex;
+}
+
+.info {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+.title {
+    padding-top: 5px;
+    font-size: 18px;
+}
+
+.data {
+    /* margin-top: 3px; */
+    font-size: 40px;
+}
+
+.detail {
+    /* margin-top: 3px; */
+    font-size: 24px;
+}

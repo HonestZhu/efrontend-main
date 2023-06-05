@@ -1,0 +1,126 @@
+.stock-detail-container {
+  color: #333;
+  display: flex;
+  justify-content: center;
+  height: 72cqh;
+  margin: 4cqh 1cqw;
+}
+
+#k-line {
+  height: 100%;
+  width: 100%;
+  display: inline-flexbox;
+  border: 1px solid #ddd;
+  box-shadow: 2px 2px 2px #ddd;
+  border-radius: 8px;
+}
+
+.stock-detail-basic-info {
+  width: 500px;
+  margin-left: 2cqw;
+  border: 1px solid #ddd;
+  box-shadow: 2px 2px 2px #ddd;
+  display: grid;
+  justify-content: center;
+  grid-template-areas:
+    "a a a a"
+    "b b b b"
+    "b b b b"
+    "b b b b"
+    "b b b b"
+    "b b b b"
+    "b b b b"
+    "b b b b"
+    "c c d d";
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.stock-detail-title {
+  margin: 4px 0px;
+  font-size: 32px;
+  font-weight: bold;
+  grid-area: a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stock-detail-data {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  grid-area: b;
+}
+
+.stock-detail-text {
+  margin: 16px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.stock-detail-data-left {
+  display: inline-block;
+}
+
+.stock-detail-favorite-btn {
+  display: flex;
+  grid-area: c;
+  margin: 4px 0px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10%;
+  height: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 2px 2px 2px #ddd;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: box-shadow 0.2s;
+}
+
+.stock-detail-favorite-btn:hover {
+  box-shadow: 2px 2px 4px #bbb;
+}
+
+.stock-detail-favorite-btn:active {
+  transform: scale(0.98);
+}
+
+.stock-detail-export-btn {
+  display: flex;
+  grid-area: d;
+  margin: 4px 0px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10%;
+  height: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 2px 2px 2px #ddd;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: box-shadow 0.2s;
+}
+
+.stock-detail-export-btn:hover {
+  box-shadow: 2px 2px 4px #bbb;
+}
+
+.stock-detail-export-btn:active {
+  transform: scale(0.98);
+}
+
+.favorite-btn {
+  background-color: transparent;
+  border: 0;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.favorite-btn:active {
+  transform: scale(0.95);
+}
