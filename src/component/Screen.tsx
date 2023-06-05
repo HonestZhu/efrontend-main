@@ -5,6 +5,7 @@ import SiderMenu from "./SiderMenu";
 import InfoCard from './InfoCard';
 import '../assets/css/screen.css';
 
+
 import React, { useState, useEffect } from 'react';
 // import KLine from './components/KLine';
 import axios from 'axios';
@@ -81,6 +82,7 @@ function Screen() {
                 <div key={i}>
                     {/* 只显示有数据的 */}
                     {responseData[i]?.length > 0 && (
+                        
                         <div>
                             <div className="main-title">{titles[i]}</div>
                             <div className="cards">
