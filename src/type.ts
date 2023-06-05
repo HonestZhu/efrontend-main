@@ -5,6 +5,7 @@ export interface Stock {
   id: String;
   name: String;
   time: Date;
+  date: Date;
   low: number;
   high: number;
   value: number;

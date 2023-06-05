@@ -4,9 +4,10 @@
     align-items: left;
     justify-content: left;
     overflow: hidden;
-    height: 120px;
-    width: 200px;
-    background-color: #D6EAF8;
+    height: 160px;
+    width: 280px;
+    /* color: #10d361; */
+    background-color: rgba(172, 202, 223, 0.6);
     padding-left: 15px;
 }
 
@@ -42,16 +43,16 @@
 
 
 .title {
-    padding-top: 5px;
-    font-size: 18px;
+    padding-top: 15px;
+    font-size: 24px;
 }
 
 .data {
-    /* margin-top: 3px; */
-    font-size: 40px;
+    margin-top: 3px;
+    font-size: 45px;
 }
 
 .detail {
-    /* margin-top: 3px; */
-    font-size: 24px;
+    margin-top: 3px;
+    font-size: 28px;
 }

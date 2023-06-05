@@ -3,6 +3,7 @@ import axios from "../config/axios";
 // 创建一个 axios 实例
 const instance = axios.create({
   baseURL: "http://192.168.0.137:8080/api",
+  // baseURL: "http://1.117.68.73:9595",
   timeout: 5000, // 超时时间 5s
 });
 

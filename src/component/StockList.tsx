@@ -102,104 +102,49 @@ function SearchList(props: any) {
 
   const columns: any = [
     {
-      title: "stock-code",
-      dataIndex: "id",
+      title: "股票代码",
+      dataIndex: "sid",
       key: "StockId",
     },
     {
-      title: "stock-name",
+      title: "股票名",
       dataIndex: "name",
       key: "StockName",
     },
 
     {
-      title: "record-low",
+      title: "最低价",
       dataIndex: "min_low",
       key: "StockMaxlow",
       sorter: (a: { min_low: any }, b: { min_low: any }) =>
         a.min_low - b.min_low,
     },
     {
-      title: "record-high",
+      title: "最高价",
       dataIndex: "max_high",
       key: "StockMaxhigh",
       sorter: (a: { max_high: any }, b: { max_high: any }) =>
         a.max_high - b.max_high,
     },
     {
-      title: "value",
-      dataIndex: "value",
-      key: "StockValue",
+      title: "买入价",
+      dataIndex: "buy_price",
+      key: "BuyPrice",
       sorter: (a: { value: any }, b: { value: any }) => a.value - b.value,
     },
-    // {
-    //   title: "create-date",
-    //   dataIndex: "create_date",
-    //   key: "StockCreateDate",
-    //   filters: [
-    //     {
-    //       text: "自定义时间",
-    //       value: "custom",
-    //     },
-    //   ],
-    //   onFilter: (value: string, record: { create_date: string }) => {
-    //     if (!startDate || !endDate) {
-    //       return true;
-    //     }
-
-    //     const date = dayjs(record.create_date);
-
-    //     return date.isAfter(startDate) && date.isBefore(endDate);
-    //   },
-    //   filterDropdown: ({
-    //     setSelectedKeys,
-    //     selectedKeys,
-    //     confirm,
-    //     clearFilters,
-    //   }: FilterDropdownProps) => (
-    //     <div style={{ padding: 8 }}>
-    //       <RangePicker
-    //         value={[startDate, endDate]}
-    //         onChange={onDateFilterChange}
-    //         onOk={() => {
-    //           confirm();
-    //         }}
-    //       />
-    //       <Button
-    //         type="primary"
-    //         onClick={() => {
-    //           confirm();
-    //         }}
-    //         size="small"
-    //         style={{ marginTop: 8, marginRight: 8 }}
-    //       >
-    //         submit
-    //       </Button>
-    //       <Button
-    //         onClick={() => {
-    //           setStartDate(null);
-    //           setEndDate(null);
-    //           setSelectedKeys([]);
-    //           clearFilters();
-    //           setSearchResult(dataSource);
-    //           console.log(dataSource);
-    //         }}
-    //         size="small"
-    //         style={{ marginTop: 8 }}
-    //       >
-    //         reset
-    //       </Button>
-    //     </div>
-    //   ),
-    // },
-
     {
-      title: "action",
+      title: "卖出价",
+      dataIndex: "sell_price",
+      key: "SellPrice",
+      sorter: (a: { value: any }, b: { value: any }) => a.value - b.value,
+    },
+    {
+      title: "操作",
       key: "action",
       render: (_: any, record: any) => {
         return (
           <Space size="middle">
-            <Link to={`/stocklist/${record.id}?name=` + record.name}>
+            <Link to={`/stocklist/${record.sid}?name=` + record.name}>
               <EyeTwoTone />
             </Link>
             <button

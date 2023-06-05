@@ -1,0 +1,68 @@
+.main-title {
+    font-size: 24px;
+    line-height: 24px;
+    padding: 20px 12px;
+    letter-spacing: 5px;
+    font-weight: bolder;
+    color: #473f3f;
+  }
+  
+
+.container {
+    /* position: absolute; */
+    /* left: 2vw;
+    top: 6vh;
+    border-radius: 10px;
+    width: 96vw;
+    height: 92vh;
+    background-color: #AFA6DC;
+    overflow-y: scroll; */
+    width: 100%;
+}
+
+.cards {
+    display: flex;
+    overflow-x: scroll;
+    margin-left: 1vw;
+    width: 100%;
+    user-select: none;
+    gap: 1vh 1vw;
+}
+
+.card {
+    width: 280px;
+    height: 160px;
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+.cards::-webkit-scrollbar {
+    height: 8px;
+}
+
+.cards::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 8px;
+}
+
+.cards:hover::-webkit-scrollbar-thumb {
+    background-color: rgb(214,234,248);
+    border-radius: 8px;
+}
+
+
+.cards::-webkit-scrollbar-track {
+
+    border-radius: 8px;
+}
+
+/* 隐藏滚动条 */
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+.modal {
+    padding: 0;
+}

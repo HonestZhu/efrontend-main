@@ -3,6 +3,7 @@ import { Menu } from "antd";
 import logo from "../stock.svg"
 import SiderMenu from "./SiderMenu";
 import InfoCard from './InfoCard';
+import '../assets/css/screen.css';
 
 import React, { useState, useEffect } from 'react';
 // import KLine from './components/KLine';
@@ -24,18 +25,12 @@ function Screen() {
         return () => clearInterval(intervalId);
     }, []);
 
+
+
     async function fetchData() {
         try {
             setIsLoading(true);
-            const response = await axios.get(`http://www.ylxteach.net:10001/api/common?format=json&key=xw`, {
-                headers: {
-                    'X-Skip-Proxy': 'true',
-                    'Access-Control-Allow-Origin': '*'
-                }
-                
-            });
-            console.log(response);
-            
+            const response = await axios.get(`http://120.48.78.248:10001/api/common?format=json&key=zjc`);
             setResponseData(response.data.message);
 
             // 获取当前时间
@@ -80,15 +75,14 @@ function Screen() {
     };
 
     return (
-        <div className="root">
-            <div className="header">行情展示大屏</div>
-            <div className="container">
-                {/* 遍历七个类别，其中港股没有数据 */}
-                {[...Array(7)].map((_, i) => (
-                    // 只显示有数据的
-                    responseData[i].length > 0 && (
-                        <div key={i}>
-                            <div className="title">{titles[i]}</div>
+        <>
+            {/* 遍历七个类别，其中港股没有数据 */}
+            {Array.from({ length: 7 }, (_, i) => (
+                <div key={i}>
+                    {/* 只显示有数据的 */}
+                    {responseData[i]?.length > 0 && (
+                        <div>
+                            <div className="main-title">{titles[i]}</div>
                             <div className="cards">
                                 {/* 显示一行 */}
                                 {responseData[i].map((item: any, j: number) => (
@@ -106,12 +100,10 @@ function Screen() {
                                 ))}
                             </div>
                         </div>
-                    )
-                ))}
-            </div>
-
-
-        </div>
+                    )}
+                </div>
+            ))}
+            </>
     );
 }
 

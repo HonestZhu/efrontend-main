@@ -3,6 +3,7 @@ import * as echarts from "echarts";
 import "echarts-gl";
 import "./../assets/css/stock.css";
 import { Stock } from "../type";
+import { log } from "console";
 
 class KLine extends React.Component<{ stockData: Stock[] | undefined }> {
   
@@ -21,7 +22,7 @@ class KLine extends React.Component<{ stockData: Stock[] | undefined }> {
     let data = []
     if (this.props.stockData) {
       for (let stock of this.props.stockData) {
-        let date: string = stock.time.toString().slice(0, 10);
+        let date: string = stock.date.toString().slice(0, 10);
         data.push([date, stock.open, stock.close, stock.low, stock.high]);
       }
     }

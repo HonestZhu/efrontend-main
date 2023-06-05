@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "",
+  "proxy": "http://1.117.68.73:9595",
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
     "@testing-library/jest-dom": "^5.16.5",

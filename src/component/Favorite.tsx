@@ -44,9 +44,9 @@ function Favorite(props: any) {
         setLoading(false);
         console.log(rst);
         const dataArray = Array.isArray(rst.data.result.content) ? rst.data.result.content : [];
-        for (let data of dataArray) {
-          data.create_date = data.create_date.slice(0, 10)
-        }
+        // for (let data of dataArray) {
+        //   data.create_date = data.create_date.slice(0, 10)
+        // }
         setDataSource(dataArray);
       })
       .catch((error: any) => {
@@ -66,105 +66,40 @@ function Favorite(props: any) {
 
   const columns: any = [
     {
-      title: "stock-code",
-      dataIndex: "id",
+      title: "股票代码",
+      dataIndex: "code",
       key: "StockId",
     },
     {
-      title: "stock-name",
+      title: "股票名",
       dataIndex: "name",
       key: "StockName",
     },
 
     {
-      title: "record-low",
+      title: "最低价",
       dataIndex: "min_low",
       key: "StockMaxlow",
       sorter: (a: { min_low: any }, b: { min_low: any }) =>
         a.min_low - b.min_low,
     },
     {
-      title: "record-high",
+      title: "最高价",
       dataIndex: "max_high",
       key: "StockMaxhigh",
       sorter: (a: { max_high: any }, b: { max_high: any }) =>
         a.max_high - b.max_high,
     },
-    {
-      title: "create-date",
-      dataIndex: "create_date",
-      key: "StockCreateDate",
-      filters: [
-        {
-          text: "最近一周",
-          value: "week",
-        },
-        {
-          text: "最近一个月",
-          value: "month",
-        },
-        {
-          text: "最近三个月",
-          value: "3month",
-        },
-        {
-          text: "自定义时间",
-          value: "custom",
-        },
-      ],
-      onFilter: (value: string, record: { create_date: dayjs.Dayjs }) => {
-        const now = dayjs();
-        if (value === "week") {
-          // 筛选最近一周的数据
-          const weekAgo = now.subtract(7, "day");
-          return record.create_date.isAfter(weekAgo);
-        } else if (value === "month") {
-          // 筛选最近一个月的数据
-          const monthAgo = now.subtract(1, "month");
-          return record.create_date.isAfter(monthAgo);
-        } else if (value === "3month") {
-          // 筛选最近三个月的数据
-          // 筛选最近三个月的数据
-          const threeMonthsAgo = now.subtract(3, "month");
-          return record.create_date.isAfter(threeMonthsAgo);
-        } else if (value === "custom") {
-          // 筛选自定义时间的数据
-          return (
-            record.create_date.isAfter(startDate) &&
-            record.create_date.isBefore(endDate)
-          );
-        }
-      },
-      filterDropdown: ({
-        setSelectedKeys,
-        selectedKeys,
-        confirm,
-        clearFilters,
-      }: FilterDropdownProps) => (
-        <div style={{ padding: 8 }}>
-          <RangePicker
-            value={[startDate, endDate]}
-            onChange={(
-              dates: RangeValue<Dayjs>,
-              dateStrings: [string, string]
-            ) => onDateFilterChange(dates)}
-            onOk={() => {
-              confirm();
-            }}
-          />
-        </div>
-      ),
-    },
 
     {
-      title: "action",
+      title: "操作",
       key: "action",
       render: (_: any, record: any) => {
         return (
           <>
             {contextHolder}
             <Space size="middle">
-              <Link to={`/stocklist/${record.id}?name=` + record.name}>
+              <Link to={`/stocklist/${record.code}?name=` + record.name}>
                 <EyeTwoTone />
               </Link>
               <button
