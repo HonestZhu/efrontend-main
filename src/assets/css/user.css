@@ -1,0 +1,423 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+}
+
+body {
+    font-family: "PingFang SC", "arial", "sans-serif";
+}
+
+a,
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+    border-style: none;
+    padding: 0px;
+    font: inherit;
+    color: inherit;
+    text-decoration: inherit;
+    text-align: inherit;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+img {
+    border: none;
+}
+
+/* 客户案例样式 */
+.customer {
+    background: #f9fafc;
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+
+.customer h3,
+.cooperate h3 {
+    text-align: center;
+    color: #505050;
+    font-size: 34px;
+    padding: 80px 0 50px;
+    font-weight: 400;
+}
+
+.Box {
+    position: relative;
+}
+
+.Box .content {
+    width: 1060px;
+    margin: 0 auto;
+}
+
+.Box h2 {
+    text-align: center;
+    margin-bottom: 35px;
+    padding-top: 250px;
+}
+
+.Box .Box_con {
+    position: relative;
+}
+
+.Box .Box_con .btnl {
+    position: absolute;
+}
+
+.Box .Box_con .btn {
+    display: block;
+    width: 16px;
+    height: 40px;
+    position: absolute;
+    top: 94px;
+    cursor: pointer;
+    color: #8c8c8c;
+    font-size: 28px;
+}
+
+.Box .Box_con .btnl {
+    left: -50px;
+    background: url("//cdn.xiaobao100.com/crm/assets/images/icon_lt_gray.png") no-repeat;
+    background-size: contain;
+}
+
+.Box .Box_con .btnr {
+    right: -55px;
+    background: url("//cdn.xiaobao100.com/crm/assets/images/icon_gt_gray.png") no-repeat;
+    background-size: contain;
+}
+
+.Box .Box_con .conbox {
+    position: relative;
+    overflow: hidden;
+    height: 280px;
+    padding: 0 10px;
+}
+
+.Box .Box_con .conbox ul {
+    position: relative;
+}
+
+.Box .Box_con .conbox ul li {
+    float: left;
+    width: 326px;
+    min-height: 200px;
+    padding-left: 20px;
+    overflow: hidden;
+}
+
+.Box .Box_con .conbox ul li:first-child {
+    margin-left: 0;
+}
+
+.Box .Box_con .conbox ul li img {
+    transition: all 0.5s;
+}
+
+.Box .BoxSwitch {
+    display: none;
+}
+
+.Box .BoxSwitch span {
+    display: inline-block;
+    vertical-align: middle;
+    width: 30px;
+    height: 3px;
+    background: #ccc;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.Box .BoxSwitch span.cur {
+    background: red;
+}
+
+.cust_cont {
+    background: url("//cdn.xiaobao100.com/crm/assets/images/icon_ana_with_shadow.png") no-repeat;
+    background-size: cover;
+    /* height: 232px; */
+    height: 208px;
+    width: 100%;
+    text-align: left;
+    position: relative;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    margin-bottom: 2px;
+}
+
+.cust_cont:hover {
+    background: url("//cdn.xiaobao100.com/crm/assets/images/icon_ana_without_shadow.png") no-repeat;
+    background-size: cover;
+    transform: translate3d(0, -3px, 0);
+    -ms-transform: translate3d(0, -3px, 0);
+    -moz-transform: translate3d(0, -3px, 0);
+    -webkit-transform: translate3d(0, -3px, 0);
+}
+
+.cust_cont p {
+    font-size: 14px;
+    color: #505050;
+    line-height: 25px;
+    width: 250px;
+    padding-top: 30px;
+    padding-left: 30px;
+}
+
+.job_name {
+    min-height: 60px;
+    text-align: left;
+    /* margin-top: 10px; */
+}
+
+.Box .Box_con .conbox ul li .job_name img {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.job_name .custer {
+    width: 250px;
+    min-height: 50px;
+    padding-left: 10px;
+    display: inline-block;
+    color: #ccc;
+}
+
+.job_name .custer p:nth-child(1) {
+    width: 100%;
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #505050;
+    margin-bottom: 8px;
+}
+
+.job_name .custer p:nth-child(1) span {
+    margin-left: 10px;
+}
+
+.job_name .custer p:nth-child(2) {
+    font-size: 12px;
+    color: #8c8c8c;
+    margin-bottom: 8px;
+}
+
+.job_name .custer p:nth-child(2) span {
+    color: #1474fc;
+}
+
+.job_name .custer p:nth-child(3) {
+    font-size: 12px;
+    color: #8c8c8c;
+}
+
+.job_name .custer p:nth-child(3) span {
+    color: #1474fc;
+}
+.new-content {
+    min-width: 1200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.new-content .top {
+    padding-top: 60px;
+}
+
+.new-content .main-body {}
+
+.new-content .main-body .main-info {
+    background: rgba(249, 250, 252, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.new-content .main-body .main-title {
+    margin: 5px 0;
+    text-align: center;
+}
+
+.new-content .main-body .main-title>span {
+    height: 45px;
+    font-size: 32px;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+    line-height: 45px;
+}
+
+.new-content .main-info-list {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    width: 915px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.new-content .main-info-list .main-info-list-item {
+    width: 285px;
+    height: 322px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 4px;
+    margin: 0 20px 20px 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 10px 20px 0px rgba(16, 16, 16, 0.05);
+}
+
+.main-info-list-item-top {
+    border-radius: 4px 4px 0 0;
+    width: 285px;
+    height: 84px;
+    background: linear-gradient(134deg,
+    rgb(5,39,175) 0%,
+    rgb(5,39,175) 100%);
+}
+
+.main-info-list-item-top>span {
+    width: 245px;
+    height: 22px;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+    line-height: 22px;
+    display: inline-block;
+    margin-top: 31px;
+}
+
+.main-info-list-item-body {
+    text-align: center;
+}
+
+.main-info-list-item-body>img {
+    width: 80px;
+    height: 80px;
+    margin-top: 20px;
+}
+
+.main-content-list-item {
+    display: flex;
+}
+
+.main-content-list-item:nth-child(2n) {
+    flex-direction: row-reverse;
+}
+
+.main-content-list-item-left>img {
+    width: 600px;
+    height: 300px;
+    display: inline-block;
+}
+
+.main-content-list-item-right {
+    display: flex;
+    flex-direction: column;
+    padding-left: 100px;
+    height: 100%;
+    width: 100%;
+}
+
+.main-content-list-item-title {
+    font-size: 24px;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+    line-height: 33px;
+    margin-top: 86px;
+    margin-bottom: 30px;
+}
+
+.main-content-list-item-text {
+    font-size: 16px;
+    font-family: PingFangSC-Regular, PingFangSC;
+    font-weight: 400;
+    color: rgba(51, 51, 51, 1);
+    line-height: 22px;
+}
+
+.main-info-list-item-body>.main-info-list-item-body-h {
+    height: 35px;
+    font-size: 20px;
+    font-family: PingFangSC-Medium, PingFangSC;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+    line-height: 28px;
+    display: block;
+}
+
+.main-info-list-item-body>.main-info-list-item-body-t {
+    height: 44px;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    line-height: 22px;
+}
+
+.new-content .main-content .main-content-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.new-content .main-content .main-content-list-item {
+    height: 300px;
+    width: 1200px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.main-footer-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 90px;
+    text-align: center;
+}
+
+.main-footer-logo>span {
+    margin-right: 10px;
+    width: 160px;
+    height: 60px;
+}
+
+.main-footer-logo>span>img {
+    width: 160px;
+    height: 60px;
+}
+
+.main-footer-logo-turn {
+    text-align: center;
+    margin-bottom: 29px;
+}
+
+.main-footer-logo-turn>span {
+    height: 22px;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(170, 170, 170, 1);
+    line-height: 22px;
+    cursor: pointer;
+}

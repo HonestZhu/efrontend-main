@@ -6,10 +6,12 @@ import KLine from "./KLine";
 import "./../assets/css/stock.css";
 import axios from "../config/axios";
 import { AxiosResponse } from "axios";
+import { log } from "console";
 
 const StockDetail = () => {
   const [loading, setLoading] = useState(true);
   const [stockData, setStockData] = useState<any>();
+  const [riskType, setRiskType] = useState<any>();
   const { stock_id } = useParams();
   let name = decodeURI(useLocation().search.split("=")[1]);
 
@@ -17,14 +19,9 @@ const StockDetail = () => {
     console.log("useEffect stock_id:", stock_id);
     setLoading(true);
 
-    // let rst;
-    // if(stock_id) rst = localStorage.getItem(stock_id);
-    // if(rst) {
-    //   let data : any = JSON.parse(rst);
-    //   setStockData(data);
-    // } else {
-      
-    // }
+    axios.get('https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz601949,day,,2023-06-06,100,qfq').then((data) => {
+      console.log(data)
+    })
 
     axios
         .get(`/api/stock_data/get/?sid=` + stock_id)
@@ -36,14 +33,26 @@ const StockDetail = () => {
         })
         .catch((error) => console.error(error))
         .finally(() => setLoading(false));
+    axios
+        .get(`/api/stock/riskTpye/`+stock_id)
+        .then((data) => {
+          data = data.data.result;
+          console.log("风险类型")
+          console.log(data);
+          if(stock_id) localStorage.setItem(stock_id, JSON.stringify(data));
+          setRiskType(data);
+        })
+        .catch((error) => console.error(error))
+        .finally(() => setLoading(false));
 
   }, [stock_id]);
 
   var rst = analyse(stockData);
-
+  var rstRiskType = analyseRiskType(riskType);
   const upStyle = { color: "red" };
   const downStyle = { color: "green" };
 
+  // @ts-ignore
   return (
     <div>
       {loading && <Spin />} {/* 展示加载中状态 */}
@@ -75,6 +84,9 @@ const StockDetail = () => {
                 >
                   日涨跌率：{formatNumber(rst.deltaPercent * 100)}%
                 </div>
+                <div className="stock-detail-text">
+                  风险类型：{rstRiskType}
+                </div>
               </div>
             </div>
             <div
@@ -101,7 +113,7 @@ const StockDetail = () => {
             <a
               className="stock-detail-export-btn"
               href={
-                `http://192.168.1.115:9595/api/stock_data/export/?sid=` +
+                `http://1.117.68.73:9595/api/stock_data/export/?sid=` +
                 stock_id
               }
             >
@@ -153,6 +165,13 @@ function analyse(data: Stock[]): {
   }
 
   return { max, min, volume, delta, deltaPercent };
+}
+function analyseRiskType(riskType: { investmentType: string } | null): string {
+  if (riskType === null || riskType === undefined) {
+    return "暂无该股票的风险类型";
+  } else {
+    return riskType.investmentType;
+  }
 }
 
 export default StockDetail;

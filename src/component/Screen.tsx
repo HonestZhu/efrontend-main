@@ -1,4 +1,4 @@
-import { Menu } from "antd";
+import { Modal, Button } from "antd";
 // import React from "react";
 import logo from "../stock.svg"
 import SiderMenu from "./SiderMenu";
@@ -7,10 +7,9 @@ import '../assets/css/screen.css';
 
 
 import React, { useState, useEffect } from 'react';
-// import KLine from './components/KLine';
+import KLine from "./KLine";
 import axios from 'axios';
 import { log } from "console";
-// import { baseurl } from '../public/baseurl';
 
 function Screen() {
     const [visible, setVisible] = useState(false);
@@ -19,6 +18,7 @@ function Screen() {
     const [responseData, setResponseData] = useState(new Array(7).fill([]));
     const status: boolean[][] = Array.from({ length: 7 }, () => []);
     const [selectItem, setSelectItem] = useState(null);
+    const [stockData, setStockData] = useState<any>();
 
     useEffect(() => {
         fetchData();
@@ -82,7 +82,7 @@ function Screen() {
                 <div key={i}>
                     {/* 只显示有数据的 */}
                     {responseData[i]?.length > 0 && (
-                        
+
                         <div>
                             <div className="main-title">{titles[i]}</div>
                             <div className="cards">
@@ -96,7 +96,7 @@ function Screen() {
                                             changeNum={item.diff}
                                             status={status[i][j]}
                                             changePercent={item.increase_rate}
-                                            onClick={() => handleClick(i, j)}
+                                            
                                         />
                                     </div>
                                 ))}
@@ -105,7 +105,7 @@ function Screen() {
                     )}
                 </div>
             ))}
-            </>
+        </>
     );
 }
 

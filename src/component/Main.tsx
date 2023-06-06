@@ -134,7 +134,7 @@ const Main = () => {
         </div>
         <Menu
           theme={theme as "light" | "dark"}
-          defaultSelectedKeys={["1"]}
+          defaultSelectedKeys={["2"]}
           mode="inline"
           style={{
             fontSize: "16px",

@@ -2,9 +2,14 @@ import { Menu } from "antd";
 import React from "react";
 import logo from "../stock.svg"
 import SiderMenu from "./SiderMenu";
+import Questionnaire from "./questionnaire";
 
 function Recommend() {
-    return <div>Recommend</div>
+    return (
+        <div>
+            <Questionnaire></Questionnaire>
+        </div>
+    )
 }
 
 export default Recommend;
