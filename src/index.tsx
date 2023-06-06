@@ -11,6 +11,7 @@ import StockCreate from "./component/StockCreate";
 import User from "./component/User";
 import Screen from "./component/Screen";
 import Recommend from "./component/Recommend";
+import Help from "./component/help";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/recommend",
         element: <Recommend />,
+      },
+      {
+        path: "/help",
+        element: <Help />,
       }
     ],
   },

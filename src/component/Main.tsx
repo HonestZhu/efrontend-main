@@ -9,7 +9,8 @@ import Icon, {
   createFromIconfontCN,
   UserOutlined,
   SlidersOutlined,
-  LikeOutlined
+  LikeOutlined,
+  QuestionCircleOutlined
 } from "@ant-design/icons";
 import Title from "antd/es/typography/Title";
 import Login from "./login";
@@ -157,6 +158,9 @@ const Main = () => {
           <Menu.Item key="5" icon={<LikeOutlined />} style={{ height: 60 }}>
             <Link to="/recommend">推荐</Link>
           </Menu.Item>
+          <Menu.Item key="6" icon={<QuestionCircleOutlined />} style={{ height: 60 }}>
+            <Link to="/help">帮助</Link>
+          </Menu.Item>
         </Menu>
       </Sider>
       <Layout className="site-layout">
@@ -176,7 +180,7 @@ const Main = () => {
               shape="round"
               onClick={toggleTheme}
               icon={<BgColorsOutlined />}
-              style={{ marginTop: 28, marginLeft: 10, marginRight: 1250 }}
+              style={{ marginTop: 28,  marginRight: 200 }}
             ></Button>
             <div style={{ marginTop: -65, marginRight: 40 }}>
               {!loggedIn && (

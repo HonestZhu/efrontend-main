@@ -1,0 +1,28 @@
+.help {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.group {
+    margin-top: 30px;
+}
+
+.quetion {
+    margin-left: -20px;
+    font-size: 36px;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+.answer {
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.line {
+    margin-top: 8px;
+}
+
+.indent {
+    text-indent: 2em;
+}
