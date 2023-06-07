@@ -3,11 +3,13 @@ import {
     Button,
     message,
     notification,
+    Modal
 } from "antd";
 import type { NotificationPlacement } from "antd/es/notification/interface";
 import axios from "../config/axios";
 import { CSSProperties } from 'react';
 import { useNavigate } from 'react-router-dom';
+import KLine from "./KLine";
 
 const data = [
     [['300989', '蕾奥规划'], ['300964', '本川智能'], ['301085', '亚康股份'], ['688228', '开普云'], ['002175', '东方智造'], ['600683', '京投发展'], ['688076', '诺泰生物'], ['000802', '北京文化'], ['002806', '华锋股份'], ['603097', '江苏华辰'], ['002880', '卫光生物'], ['603038', '华立股份'], ['600822', '上海物贸'], ['600732', '爱旭股份'], ['600257', '大湖股份'], ['603629', '利通电子'], ['605588', '冠石科技'], ['603912', '佳力图'], ['300949', '奥雅股份'], ['000014', '沙河股份'], ['002697', '红旗连锁'], ['603825', '华扬联众'], ['603887', '城地香江'], ['603889', '新澳股份'], ['001223', '欧克科技'], ['300500', '启迪设计'], ['300776', '帝尔激光'], ['301313', '凡拓数创'], ['301263', '泰恩康'], ['002892', '科力尔'], ['688053', '思科瑞'], ['603000', '人民网'], ['002043', '兔 宝 宝'], ['300094', '国联水产'], ['603070', '万控智造'], ['002553', '南方精工'], ['002323', '雅博股份'], ['300778', '新城市'], ['000530', '冰山冷热'], ['002959', '小熊电器'], ['603869', '新智认知'], ['300911', '亿田智能'], ['000736', '中交地产'], ['000797', '中国武夷'], ['300917', '特发服务'], ['301317', '鑫磊股份'], ['603399', '吉翔股份'], ['002432', '九安医疗'], ['002038', '双鹭药业'], ['600576', '祥源文旅'], ['000821', '京山轻机'], ['002508', '老板电器'], ['002126', '银轮股份'], ['600225', '卓朗科技'], ['300036', '超图软件'], ['300602', '飞荣达'], ['000158', '常山北明'], ['603896', '寿仙谷'], ['002638', '勤上股份'], ['600068', '葛洲坝']],
@@ -23,6 +25,10 @@ const data = [
 const Recom = () => {
     const [stratagy, setStratagy] = useState(0);
     const navigate = useNavigate();
+    const [open, setOpen] = useState(false);
+    const [stockData, setStockData] = useState<any>();
+    const [loading, setLoading] = useState(true);
+    const [title, setTitle] = useState('Title');
 
     const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setStratagy(parseInt(event.target.value));
@@ -41,6 +47,46 @@ const Recom = () => {
         navigate('/questionnaire');
     }
 
+    function getCurrentDate() {
+        var currentDate = new Date();
+        var year = String(currentDate.getFullYear());     // 获取当前年份
+        var month = String(currentDate.getMonth() + 1);  // 获取当前月份，需要加1
+        var day = String(currentDate.getDate());          // 获取当前日期
+
+        // 将月份和日期转换为两位数格式
+        if (Number(month) < 10) {
+            month = '0' + month;
+        }
+        if (Number(day) < 10) {
+            day = '0' + day;
+        }
+
+        var formattedDate = year + '-' + month + '-' + day;
+        return formattedDate;
+    }
+
+    const handleClick = (ticker: string, name: string) => {
+        setOpen(true);
+        setLoading(true);
+        setTitle(name);
+        ticker = 'sz' + ticker
+        axios.get('https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=' + ticker + ',day,,2023-06-08,100,qfq').then((data) => {
+            let info = data.data.data[ticker].qfqday
+            let res: [string, number, number, number, number][] = []
+            res = info.map((item: any) => ({
+                date: item[0],
+                open: item[1],
+                close: item[2],
+                low: item[4],
+                hign: item[3]
+              }));
+            console.log(res)
+            setStockData(res)
+        }).finally(() => {
+            setLoading(false);
+        });
+    }
+
     const renderStockList = () => {
         const stockItems = data[stratagy];
 
@@ -50,12 +96,14 @@ const Recom = () => {
                 overflowY: 'scroll',
                 marginTop: '20px',
                 fontSize: '20px',
+                lineHeight: '30px',
                 textAlign: 'center',
-                letterSpacing: '0.2em'
+                letterSpacing: '0.2em',
+                cursor: 'pointer'
             }}>
                 <ul>
                     {stockItems.map(([code, name]) => (
-                        <li key={code}>{`${code} - ${name}`}</li>
+                        <li key={code} onClick={() => handleClick(code, name)}>{`${code} - ${name}`}</li>
                     ))}
                 </ul>
             </div>
@@ -148,8 +196,8 @@ const Recom = () => {
                         type="primary"
                         onClick={clickQuestionaire}
                         style={{
-                            left:'200px',
-                            position:'relative'
+                            left: '200px',
+                            position: 'relative'
                         }}
                     >
                         用户风险评估自测
@@ -157,6 +205,26 @@ const Recom = () => {
                 </div>
             </div>
             {renderStockList()}
+            <Modal
+                title={title}
+                centered
+                open={open}
+                onOk={() => setOpen(false)}
+                onCancel={() => setOpen(false)}
+                width={1000}
+            >
+                {!loading && (
+                    <div style={{
+                        height: '600px'
+                    }}>
+                        <KLine stockData={stockData}/>
+                    </div>
+                    
+                )}
+                
+                
+            </Modal>
+
         </div >
     );
 };

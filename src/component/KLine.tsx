@@ -19,7 +19,7 @@ class KLine extends React.Component<{ stockData: Stock[] | undefined }> {
     const myChart = echarts.init(
       document.getElementById("k-line") as HTMLElement
     );
-    let data = []
+    const data: [string, number, number, number, number][] = [];
     if (this.props.stockData) {
       for (let stock of this.props.stockData) {
         let date: string = stock.date.toString().slice(0, 10);

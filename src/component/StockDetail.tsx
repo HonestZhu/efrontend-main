@@ -19,9 +19,7 @@ const StockDetail = () => {
     console.log("useEffect stock_id:", stock_id);
     setLoading(true);
 
-    axios.get('https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz601949,day,,2023-06-06,100,qfq').then((data) => {
-      console.log(data)
-    })
+
 
     axios
         .get(`/api/stock_data/get/?sid=` + stock_id)
