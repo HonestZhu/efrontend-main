@@ -153,7 +153,7 @@ function SearchList(props: any) {
                 axios
                   .post(`/api/userstock/add`, {
                     id: 0,
-                    sid: record.id,
+                    sid: record.sid,
                     uid: 0,
                   })
                   .then(function (response) {

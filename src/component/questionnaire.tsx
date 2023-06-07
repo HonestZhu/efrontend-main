@@ -24,13 +24,13 @@ function Questionnaire() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '80vh',
-        width: '40%',
+        height: '100vh',
+        width: '50%',
         border: '1px solid #ccc',
         borderRadius: '10px',
         padding: '20px',
         boxShadow: '0 10px 10px rgba(0, 0, 0, 0.1)',
-      };
+    };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -52,7 +52,11 @@ function Questionnaire() {
             .then((data) => {
                 console.log(data);
                 setLoading(false);
-                message.success(data.result);
+                if (data.code === 200) {
+                    message.success(data.result);
+                } else {
+                    message.error("something wrong");
+                }
             })
             .catch((error) => {
                 console.log(error);
@@ -80,7 +84,7 @@ function Questionnaire() {
             alignItems: 'center'
         }}>
             <div style={formContainer}>
-                <h1 style={{fontFamily:'KaiTi, Arial, sans-serif',fontSize:'25px', marginBottom: '10px'}}>用户问卷</h1>
+                <h1 style={{ fontFamily: 'KaiTi, Arial, sans-serif', fontSize: '25px' }}>用户问卷</h1>
                 <form onSubmit={handleSubmit}>
                     <div style={formGroup}>
                         <label>1. 你的年龄是多少？</label>
@@ -132,13 +136,11 @@ function Questionnaire() {
                         <br />
                         <input type="radio" name="investmentExperience" value="4" onChange={(e) => setInvestmentExperience(e.target.value)} /> 5年以上
                     </div>
-
-                </form>
-                <Button type="primary" htmlType="submit" disabled={loading}>
+                    <Button type="primary" htmlType="submit" disabled={loading}>
                         {loading ? "Loading..." : "Submit"}
                     </Button>
+                </form>
             </div>
-            
         </div>
     );
 }

@@ -4,7 +4,7 @@ import { Button, DatePicker, Space, Table, Tag, message } from "antd";
 import { Link } from "react-router-dom";
 import { Stock } from "../type";
 import SearchStock from "./SearchStock";
-import { EyeTwoTone, StarTwoTone } from "@ant-design/icons";
+import {DeleteTwoTone, EyeTwoTone, StarTwoTone} from "@ant-design/icons";
 import moment, { Moment } from "moment";
 import { RangeValue } from "rc-picker/lib/interface";
 import dayjs, { Dayjs } from "dayjs";
@@ -67,7 +67,7 @@ function Favorite(props: any) {
   const columns: any = [
     {
       title: "股票代码",
-      dataIndex: "code",
+      dataIndex: "sid",
       key: "StockId",
     },
     {
@@ -99,7 +99,7 @@ function Favorite(props: any) {
           <>
             {contextHolder}
             <Space size="middle">
-              <Link to={`/stocklist/${record.code}?name=` + record.name}>
+              <Link to={`/stocklist/${record.sid}?name=` + record.name}>
                 <EyeTwoTone />
               </Link>
               <button
@@ -108,18 +108,20 @@ function Favorite(props: any) {
                   axios
                     .post(`/api/userstock/delete`, {
                       id: 0,
-                      sid: record.id,
+                      sid: record.sid,
                       uid: 0,
                     })
                     .then(function (response) {
+                      message.success("删除成功");
                       console.log(response);
+                      fetchDataFromAPI();
                     })
                     .catch(function (error) {
                       console.log(error);
                     });
                 }}
               >
-                <StarTwoTone />
+                <DeleteTwoTone />
               </button>
             </Space>
           </>

@@ -12,6 +12,8 @@ import User from "./component/User";
 import Screen from "./component/Screen";
 import Recommend from "./component/Recommend";
 import Help from "./component/help";
+import Recom from "./component/Recom";
+import Questionnaire from "./component/questionnaire";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/favorite",
         element: <Favorite />,
+      },
+      {
+        path: "/recom",
+        element: <Recom />,
       },
       {
         path: "/create",
@@ -45,7 +51,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/recommend",
-        element: <Recommend />,
+        element: <Recom />,
+      },
+      {
+        path: "/questionnaire",
+        element: <Questionnaire />,
       },
       {
         path: "/help",

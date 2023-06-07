@@ -22,7 +22,7 @@ const StockCreate: React.FC = () => {
     //校验通过后发送
     const body = {
       create_date: dayjs(values.create_date),
-      id: values.id,
+      code: values.code,
       max_high: values.max_high,
       min_low: values.min_low,
       name: values.name,
@@ -129,7 +129,7 @@ const StockCreate: React.FC = () => {
       >
         <Form.Item
           label="code"
-          name="id"
+          name="code"
           rules={[{ required: true, message: "Please input your stock code!" }]}
         >
           <Input />
