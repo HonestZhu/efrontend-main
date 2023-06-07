@@ -5,6 +5,7 @@ import {
     notification,
     Modal
 } from "antd";
+import { Spin } from "antd";
 import type { NotificationPlacement } from "antd/es/notification/interface";
 import axios from "../config/axios";
 import { CSSProperties } from 'react';
@@ -70,8 +71,8 @@ const Recom = () => {
         setLoading(true);
         setTitle(name);
         ticker = 'sz' + ticker
-        axios.get('https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=' + ticker + ',day,,2023-06-08,100,qfq').then((data) => {
-            let info = data.data.data[ticker].qfqday
+        axios.get('https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=' + ticker + ',day,,2023-06-08,300,qfq').then((data) => {
+            let info = data.data.data[ticker].qfqday || data.data.data[ticker].day
             let res: [string, number, number, number, number][] = []
             res = info.map((item: any) => ({
                 date: item[0],
@@ -213,13 +214,13 @@ const Recom = () => {
                 onCancel={() => setOpen(false)}
                 width={1000}
             >
+                {loading && <Spin />}
                 {!loading && (
                     <div style={{
                         height: '600px'
                     }}>
                         <KLine stockData={stockData}/>
                     </div>
-                    
                 )}
                 
                 
